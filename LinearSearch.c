@@ -27,19 +27,19 @@ int main(void)
     int bi = -1, bj = -1;//Рядок, стовпець;
     for (int i = 0; i < n; i++)
     {
-        if(matrix[n-i][i] > 0)
+        if(matrix[n-i-1][i] > 0)
         {
             if(a == 0)
             {
-                a = matrix[n-i][i];
-                ai = n - i;
+                a = matrix[n-i-1][i];
+                ai = n - i - 1;
                 aj = i;
             }
         }
-        else
+        if(matrix[n-i-1][i] < 0)
         {
-            b = matrix[n-i][i];
-            bi = n - i;
+            b = matrix[n-i-1][i];
+            bi = n - i - 1;
             bj = i;
         }
     }
