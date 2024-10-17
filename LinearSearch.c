@@ -1,10 +1,10 @@
 #include <stdio.h>
 
-int n;
-void makeMatrix(float a[n][n]);
+void makeMatrix(int b, float a[b][b]);
 
 int main(void)
 {
+    int n;
     printf("Введіть розмірність квадратної матриці: \n");
     scanf("%i", &n);
     float matrix[n][n];
@@ -17,14 +17,14 @@ int main(void)
         scanf("%f", &matrix[i][j]);
         }
     }
-    //printf("Ваша матриця: \n");
-    //makeMatrix(matrix);
+    printf("Задана матриця: \n");
+    makeMatrix(n, matrix);
     
 
     float a = 0;//Перший додатній член побічної діагоналі
-    int ai, aj = 0;//Рядок, стовпець;
+    int ai = -1, aj = -1;//Рядок, стовпець;
     float b = 0;//Останній відʼємний член побічної діагоналі
-    int bi, bj = 0;//Рядок, стовпець;
+    int bi = -1, bj = -1;//Рядок, стовпець;
     for (int i = 0; i < n; i++)
     {
         if(matrix[n-i][i] > 0)
@@ -36,7 +36,7 @@ int main(void)
                 aj = i;
             }
         }
-        if(matrix[n-i][i] < 0)
+        else
         {
             b = matrix[n-i][i];
             bi = n - i;
@@ -44,21 +44,26 @@ int main(void)
         }
     }
     
-    matrix[ai][aj] = b;
-    matrix[bi][bj] = a;
-    printf("Змінена матриця: \n");
-    makeMatrix(matrix);
+    // Swap only if valid indices were found
+    if (ai != -1 && aj != -1 && bi != -1 && bj != -1)
+    {
+        matrix[ai][aj] = b;
+        matrix[bi][bj] = a;
+    }
+    printf("Змінена матриця a=%f (ai aj) = (%d, %d) b=%f (bi bj) = (%d, %d): \n", a, ai, aj, b, bi, bj);
+    makeMatrix(n, matrix);
 
 }
 
-void makeMatrix(float a[n][n])
+void makeMatrix(int b, float a[b][b])
 {
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < b; i++)
     {
-        for (int j = 0; j < n; j++)
+        for (int j = 0; j < b; j++)
         {
             printf("%f ", a[i][j]);
         }
         printf("\n");
     }
+    printf("\n");
 }
