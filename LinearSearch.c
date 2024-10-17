@@ -49,9 +49,11 @@ int main(void)
     {
         matrix[ai][aj] = b;
         matrix[bi][bj] = a;
+        printf("Перший додатній член побічної діагоналі = %f\n", a);
+        printf("Останній відʼємний член побічної діагоналі = %f\n", b);
+        printf("Змінена матриця \n");
+        makeMatrix(n, matrix);
     }
-    printf("Змінена матриця a=%f (ai aj) = (%d, %d) b=%f (bi bj) = (%d, %d): \n", a, ai, aj, b, bi, bj);
-    makeMatrix(n, matrix);
 
 }
 
