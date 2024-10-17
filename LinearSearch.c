@@ -13,7 +13,7 @@ int main(void)
         printf("Введіть %i рядок\n", i+1 );
         for (int j = 0; j < n; j++)
         {
-        scanf("%f ", &matrix[i][j]);
+        scanf("%f", &matrix[i][j]);
         }
     }
 }
