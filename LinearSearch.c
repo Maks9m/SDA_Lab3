@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 void makeMatrix(int b, float a[b][b]);
 
@@ -9,12 +10,28 @@ int main(void)
     scanf("%i", &n);
     float matrix[n][n];
 
-    for (int i = 0; i < n; i++)
+    int g = 0;// 0 - не генерувати матрицю, 1 - згенерувати матрицю;
+    printf("Згенерувати матрицю?\n");
+    scanf("%i", &g);
+    if(g == 0)
     {
-        printf("Введіть %i рядок\n", i+1 );
-        for (int j = 0; j < n; j++)
+        for (int i = 0; i < n; i++)
         {
-        scanf("%f", &matrix[i][j]);
+            printf("Введіть %i рядок\n", i+1 );
+            for (int j = 0; j < n; j++)
+            {
+                scanf("%f", &matrix[i][j]);
+            }
+        }
+    }
+    else
+    {
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                matrix[i][j] = ((float)rand()/(float)(RAND_MAX)) * 200.0 - 100;
+            }
         }
     }
     printf("Задана матриця: \n");
@@ -50,9 +67,13 @@ int main(void)
         matrix[ai][aj] = b;
         matrix[bi][bj] = a;
         printf("Перший додатній член побічної діагоналі = %f\n", a);
-        printf("Останній відʼємний член побічної діагоналі = %f\n", b);
+        printf("Останній відʼємний член побічної діагоналі = %f\n\n", b);
         printf("Змінена матриця \n");
         makeMatrix(n, matrix);
+    }
+    else
+    {
+
     }
 
 }
