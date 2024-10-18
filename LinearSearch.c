@@ -84,7 +84,7 @@ void makeMatrix(int b, float a[b][b])
     {
         for (int j = 0; j < b; j++)
         {
-            printf("%.3f ", a[i][j]);
+            printf("%.2f ", a[i][j]);
         }
         printf("\n");
     }
