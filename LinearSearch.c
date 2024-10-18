@@ -89,7 +89,6 @@ int main(void)
             }
         }
     }
-
 }
 
 void makeMatrix(int b, float a[b][b])
