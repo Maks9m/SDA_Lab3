@@ -73,7 +73,21 @@ int main(void)
     }
     else
     {
-
+        if(ai == -1 && aj == -1 && bi == -1 && bj == -1)
+        {
+            printf("Шукані елементи не знайдені");
+        }
+        else
+        {
+            if(ai == -1 && aj == -1)
+            {
+                printf("He знайдено перший додатній член побічної діагоналі");
+            }
+            else
+            {
+                printf("He знайдено останній відʼємний член побічної діагоналі");                
+            }
+        }
     }
 
 }
@@ -84,7 +98,7 @@ void makeMatrix(int b, float a[b][b])
     {
         for (int j = 0; j < b; j++)
         {
-            printf("%.2f ", a[i][j]);
+            printf("%.0f ", a[i][j]);
         }
         printf("\n");
     }
