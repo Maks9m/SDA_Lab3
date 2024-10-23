@@ -30,7 +30,7 @@ int main(void)
         {
             for (int j = 0; j < n; j++)
             {
-                matrix[i][j] = ((float)rand()/(float)(RAND_MAX)) * 200.0 - 100;
+                matrix[i][j] = ((float)rand()/(float)(RAND_MAX)) * 200.0 - 100.0;
             }
         }
     }
