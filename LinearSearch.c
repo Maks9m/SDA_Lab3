@@ -113,7 +113,7 @@ void makeMatrix(int b, float a[b][b], int ai, int aj, int bi, int bj)
                 {
                     if(j == bj && i == bi)//Виділити останній відʼємний член побічної діагоналі
                     {
-                        printf("\033[1;31m");                    
+                        printf("\033[1;31m");                
                     }
                     else
                     {
@@ -121,7 +121,7 @@ void makeMatrix(int b, float a[b][b], int ai, int aj, int bi, int bj)
                     }
                 }
                 printf("%7.2f ", a[i][j]);
-                printf("\033[0m");
+                printf("\033[0m");//Прибрати колір
             }
             else
             {
