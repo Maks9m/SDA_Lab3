@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
-void makeMatrix(int b, float a[b][b]);
+void makeMatrix(int b, float a[b][b], int ai, int aj, int bi, int bj);
 
 int main(void)
 {
+    srand(time(0));
     int n;
     printf("Введіть розмірність квадратної матриці: \n");
     scanf("%i", &n);
@@ -34,8 +36,6 @@ int main(void)
             }
         }
     }
-    printf("Задана матриця: \n");
-    makeMatrix(n, matrix);
     
 
     float a = 0;//Перший додатній член побічної діагоналі
@@ -60,6 +60,9 @@ int main(void)
             bj = i;
         }
     }
+
+    printf("Задана матриця: \n");
+    makeMatrix(n, matrix, ai, aj, bi, bj);
     
     // Swap only if valid indices were found
     if (ai != -1 && aj != -1 && bi != -1 && bj != -1)
@@ -69,7 +72,7 @@ int main(void)
         printf("Перший додатній член побічної діагоналі = %.2f\n", a);
         printf("Останній відʼємний член побічної діагоналі = %.2f\n\n", b);
         printf("Змінена матриця \n");
-        makeMatrix(n, matrix);
+        makeMatrix(n, matrix, ai, aj, bi, bj);
     }
     else
     {
@@ -93,13 +96,37 @@ int main(void)
     }
 }
 
-void makeMatrix(int b, float a[b][b])
+void makeMatrix(int b, float a[b][b], int ai, int aj, int bi, int bj)
 {
     for (int i = 0; i < b; i++)
     {
         for (int j = 0; j < b; j++)
         {
-            printf("%.2f ", a[i][j]);
+            //Виділення побічної діагоналі
+            if(j == b-i-1)
+            {
+                if(j == aj && i == ai)//Виділити перший додатній член побічної діагоналі
+                {
+                    printf("\033[1;31m");
+                }
+                else
+                {
+                    if(j == bj && i == bi)//Виділити останній відʼємний член побічної діагоналі
+                    {
+                        printf("\033[1;31m");                    
+                    }
+                    else
+                    {
+                        printf("\033[1;33m");
+                    }
+                }
+                printf("%7.2f ", a[i][j]);
+                printf("\033[0m");
+            }
+            else
+            {
+                printf("%7.2f ", a[i][j]);
+            }
         }
         printf("\n");
     }
